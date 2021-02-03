@@ -77,9 +77,11 @@ WSGI_APPLICATION = 'app.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'netology_project_application',
-        'HOST': '127.0.0.1',
+        'NAME': 'first_dj_homework',
+        'HOST': 'localhost',
         'PORT': '5432',
+        'USER': 'owner_first_django_homework',
+        'PASSWORD': 'owner_first_django_homework',
     }
 }
 
@@ -106,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
-LANGUAGE_CODE = 'RU-ru'
+LANGUAGE_CODE = 'ru'
 
 TIME_ZONE = 'Europe/Moscow'
 
