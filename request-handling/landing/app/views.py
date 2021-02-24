@@ -14,12 +14,9 @@ def index(request):
     ab_test = request.GET.get('from-landing', None)
     if ab_test == 'original':
         counter_click.update(['original'])
-        return render(request, 'index.html')
     elif ab_test == 'test':
         counter_click.update(['test'])
-        return render(request, 'index.html')
-    else:
-        return render(request, f"index.html")
+    return render(request, f"index.html")
     # Реализуйте логику подсчета количества переходов с лендига по GET параметру from-landing
 
 
@@ -36,14 +33,17 @@ def landing(request):
         counter_show.update(['test'])
         return render(request, 'landing_alternate.html')
     else:
-        return HttpResponseNotFound(f"<h1>ОШИБКА! Вы перешли на не существующую страницу! Kод ошибки: 404 </h1> <br>"
-                                    f"<h2>Параметры должны быть original или test</h2>")
+        return render(request, 'landing.html')
 
 
 def stats(request):
+    original_rating = round(counter_click['original'] / counter_show['original'], 2) if counter_show['original'] else 0.0
+    test_rating = round(counter_click['test'] / counter_show['test'], 2) if counter_show['test'] else 0.0
     # Реализуйте логику подсчета отношения количества переходов к количеству показов страницы
     # Для вывода результат передайте в следующем формате:
     return render(request, 'stats.html', context={
-        'test_conversion': f"{counter_show['test']}/{counter_click['test']}",
-        'original_conversion': f"{counter_show['original']}/{counter_click['original']}",
+        'test_conversion':  f'{original_rating} (переходов: {counter_click["original"]}, '
+                            f'показов: {counter_show["original"]})',
+        'original_conversion': f'{test_rating} (переходов: {counter_click["test"]}, '
+                               f'показов: {counter_show["test"]})'
     })
