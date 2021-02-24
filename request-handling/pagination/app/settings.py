@@ -76,6 +76,8 @@ STATICFILES_DIRS = [
 ]
 
 BUS_STATION_CSV = os.path.join(BASE_DIR, 'data-398-2018-08-30.csv')
+BUS_STATION_PAGE = 10
+BUS_PARAM_NAME_PAGE = 'page'
 
 SECRET_KEY = 'put your secret here'
 DEBUG = True
