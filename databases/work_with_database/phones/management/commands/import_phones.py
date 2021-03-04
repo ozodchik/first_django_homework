@@ -16,5 +16,5 @@ class Command(BaseCommand):
             next(phone_reader)
 
             for line in phone_reader:
-                # TODO: Добавьте сохранение модели
+                print(line)
                 pass
