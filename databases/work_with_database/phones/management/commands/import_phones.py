@@ -10,11 +10,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         with open('phones.csv', 'r') as csvfile:
-
-            phone_reader = csv.reader(csvfile, delimiter=';')
-            # пропускаем заголовок
-            next(phone_reader)
-
+            phone_reader = csv.DictReader(csvfile, delimiter=';')
             for line in phone_reader:
-                print(line)
-                pass
+                phone = Phone(ID=line["id"], name=line["name"], image=line["image"], price=line["price"],
+                              release=line["release_date"], lte_exists=line["lte_exists"], slug=line["name"])
