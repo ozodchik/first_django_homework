@@ -3,17 +3,29 @@
 
 {% block title %}Каталог{% endblock %}
 {% block content %}
-    <div class="container">
-        <div class="header">
-            <h1><a href="/catalog">Каталог</a></h1>
+<div class="sort-block row justify-content-center m-3">
+            <div class="btn-group"> Сортировка:
+                  <a class="dropdown-item {{ sort_date }}" href="/catalog"> По дате</a>
+                  <a class="dropdown-item {{ sort_min_price }}" href="/catalog?sort=min_price"> По минимальной цене</a>
+                  <a class="dropdown-item {{ sort_max_price }}" href="/catalog?sort=max_price"> По максимальной цене</a>
+                  <a class="dropdown-item {{ sort_name }}" href="/catalog?sort=name"> По названию</a>
+
+            </div>
         </div>
 
-        <div class="sort-block">
-            {# Здесь должен быть раздел с сортировкой #}
+        <div class="content row justify-content-center">
+            <div class="card-deck text-center">
+            {% for phone in phones %}
+            <div class="card bg-light">
+              <div class="card-header">
+                <a href="/catalog/{{phone.slug}}"><h5 class="card-title">{{phone.name}}</h5></a>
+              </div>
+                <a href="/catalog/{{phone.slug}}"><img src="{{phone.image}}" class="card-img-top" alt="{{phone.name}}"></a>
+              <div class="card-body">
+                <a href="/catalog/{{phone.slug}}" class="btn btn-outline-primary">Стоимость: {{phone.price}} р.</a>
+              </div>
+            </div>
+            {% endfor %}
+            </div>
         </div>
-
-        <div class="content">
-            {# Здесь должен отображаться каталог с телефонами #}
-        </div>
-    </div>
 {% endblock %}

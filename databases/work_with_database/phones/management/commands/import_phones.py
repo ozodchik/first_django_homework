@@ -13,4 +13,6 @@ class Command(BaseCommand):
             phone_reader = csv.DictReader(csvfile, delimiter=';')
             for line in phone_reader:
                 phone = Phone(ID=line["id"], name=line["name"], image=line["image"], price=line["price"],
-                              release=line["release_date"], lte_exists=line["lte_exists"], slug=line["name"])
+                              release=line["release_date"], lte_exists=line["lte_exists"],
+                              slug=line["name"].replace(" ", "_").lower())
+                phone.save()
