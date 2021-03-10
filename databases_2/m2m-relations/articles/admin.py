@@ -5,7 +5,7 @@ from django.forms import BaseInlineFormSet
 from .models import Sections, ArticleSection, Article
 
 
-class ArticleSectionFormset(BaseInlineFormSet):
+class ArticleSectionInlineFormset(BaseInlineFormSet):
     def clean(self):
         is_main_present = False
         for form in self.forms:
@@ -25,7 +25,7 @@ class ArticleSectionFormset(BaseInlineFormSet):
 class ArticleSectionInline(admin.TabularInline):
     model = ArticleSection
     extra = 1
-    formset = ArticleSectionFormset
+    formset = ArticleSectionInlineFormset
 
 
 class ArticleAdmin(admin.ModelAdmin):

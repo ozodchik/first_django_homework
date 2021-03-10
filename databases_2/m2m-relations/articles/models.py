@@ -29,10 +29,10 @@ class Sections(models.Model):
 
 
 class ArticleSection(models.Model):
-    article = models.ForeignKey("Article",
+    article = models.ForeignKey(Article,
                                 on_delete=models.CASCADE,
                                 related_name="article")
-    section = models.ForeignKey("Sections",
+    section = models.ForeignKey(Sections,
                                 on_delete=models.CASCADE,
                                 )
     main_section = models.BooleanField(verbose_name="Главная рубрика")
