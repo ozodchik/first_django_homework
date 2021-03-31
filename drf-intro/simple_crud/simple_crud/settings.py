@@ -80,8 +80,10 @@ WSGI_APPLICATION = 'simple_crud.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'netology_simple_crud',
-        'HOST': '127.0.0.1',
+        'NAME': 'dj_api_homework',
+        'USER': 'owner_dj_api_homework',
+        'PASSWORD': 'owner_dj_api_homework',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }
