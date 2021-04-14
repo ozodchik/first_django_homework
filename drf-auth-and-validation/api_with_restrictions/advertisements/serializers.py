@@ -1,7 +1,7 @@
-from django.contrib.auth.models import User
+
 from rest_framework import serializers
 
-from advertisements.models import Advertisement
+from advertisements.models import Advertisement, User
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -9,8 +9,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('id', 'username', 'first_name',
-                  'last_name',)
+        fields = ["username", "first_name", "last_name"]
 
 
 class AdvertisementSerializer(serializers.ModelSerializer):
