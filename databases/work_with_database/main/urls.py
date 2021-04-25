@@ -16,7 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-import phones.views
+from phone_comparison import phones
+from work_with_database.phones.views import show_catalog, show_product
 
 urlpatterns = [
     path('admin/', admin.site.urls),
